@@ -39,13 +39,15 @@ public class discount {
         discount Discount = new discount(getPrice(), getDiscount(), getOffset(), getReadLength());
         int[] newprices = new int[readLength];
         int i;
+        int n = 0;
         double price_in_double;
         int price_in_int;
         double newdiscount = discount * 0.01;
         for (i = offset; i < offset + readLength; i++) {
             price_in_double = price[i] * newdiscount;
             price_in_int = (int) Math.floor(price_in_double);
-            newprices[i - readLength] = price_in_int;
+            newprices[n] = price_in_int;
+            n++;
 
         }
 
@@ -53,7 +55,7 @@ public class discount {
 
     }
     public static void main(String[] args) {
-        discount tester = new discount(new int[]{10, 20, 40, 50, 60},50,2,2);
+        discount tester = new discount(new int[]{10, 20, 40, 50, 60},50,1,3);
         System.out.println(Arrays.toString(tester.decryptData(tester.getPrice(), tester.getDiscount(), tester.getOffset(), tester.getReadLength())));
     }
 };
